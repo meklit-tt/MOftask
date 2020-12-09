@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_032812) do
+ActiveRecord::Schema.define(version: 2020_12_09_084026) do
 
   create_table "places", force: :cascade do |t|
     t.string "railwayname"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2020_12_09_032812) do
     t.time "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "property_id"
+    t.index ["property_id"], name: "index_places_on_property_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -28,8 +30,6 @@ ActiveRecord::Schema.define(version: 2020_12_09_032812) do
     t.text "remark"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "place_id"
-    t.index ["place_id"], name: "index_properties_on_place_id"
   end
 
 end

@@ -19,6 +19,7 @@
 
   <tbody>
     <% @properties.each do |property| %>
+    <%= form.hidden_field :place_attributes %>
       <tr>
         <td><%= property.propertyname %></td>
         <td><%= property.rent %></td>

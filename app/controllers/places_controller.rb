@@ -14,7 +14,7 @@ class PlacesController < ApplicationController
 
   # GET /places/new
   def new
-    @place = Place.new
+     @place =place.new
   end
 
   # GET /places/1/edit
@@ -25,7 +25,6 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     @place = Place.new(place_params)
-
     respond_to do |format|
       if @place.save
         format.html { redirect_to @place, notice: 'Place was successfully created.' }
@@ -69,6 +68,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:railwayname, :stationname, :, :duration)
+      params.require(:place).permit(:railwayname, :stationname, :duration)
     end
 end

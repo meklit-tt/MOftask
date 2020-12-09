@@ -14,7 +14,11 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
-    @property = Property.new
+    if params[:back]
+      @properties = Property.new(post_params)
+    else
+      @properties = Property.new
+    end
   end
 
   # GET /properties/1/edit
@@ -69,6 +73,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:propertyname, :rent, :, :buildingage, :, :adress, :, :remark)
+      params.require(:property).permit(:propertyname, :rent, :buildingage, :adress, :remark)
     end
 end

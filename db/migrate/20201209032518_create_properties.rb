@@ -1,0 +1,13 @@
+class CreateProperties < ActiveRecord::Migration[5.2]
+  def change
+    create_table :properties do |t|
+      t.string :propertyname
+      t.integer :rent
+      t.string :buildingage
+      t.string :adress
+      t.text :remark
+
+      t.timestamps
+    end
+  end
+end

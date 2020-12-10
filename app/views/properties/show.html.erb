@@ -23,10 +23,20 @@
   <strong>Remark:</strong>
   <%= @property.remark %>
 </p>
-
+<% @properties.places.each do |place_form| %>
 <p>
-  <strong>railwayname:</strong>
+  <strong>railway name:</strong>
+<%  @properties.places.railwayname %>
+</p>
+<p>
+  <strong>station name:</strong>
+<%  @properties.places.stationname %>
+</p>
+<p>
+  <strong>duration:</strong>
+<%  @properties.places.duration %>
+</p>
 
-
+<% end %>
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>

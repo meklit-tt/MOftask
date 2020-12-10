@@ -14,25 +14,21 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
-    if params[:back]
-      @properties = Property.new(property_params)
-    else
       @properties = Property.new
-    end
+      @properties.places.build
   end
 
   # GET /properties/1/edit
   def edit
-  end
+    @properties = Property.find(params[:id])
 
-  # POST /properties
-  # POST /properties.json
+  end
   def create
-    @property = Property.new(property_params)
+    @properties = Property.new(property_params)
 
     respond_to do |format|
-      if @property.save
-        format.html { redirect_to @property, notice: 'Property was successfully created.' }
+      if @properties.save
+        format.html { redirect_to @properties, notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }
       else
         format.html { render :new }
@@ -73,8 +69,8 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require (:property).permit(:propertyname, :rent, :buildingage, :adress, :remark,
-        place_attributes:[:railwayname, :stationname, :duration ]
+      params.require(:property).permit(:propertyname, :rent, :buildingage, :adress, :remark,
+        places_attributes:[:id,:railwayname, :stationname, :duration ]
     )
     end
 end

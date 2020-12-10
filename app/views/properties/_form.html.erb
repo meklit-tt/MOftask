@@ -1,10 +1,10 @@
-<%= form_with(model: property, local: true) do |form| %>
-  <% if property.errors.any? %>
+<%= form_with(model: @properties, local: true) do |form| %>
+  <% if @properties.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+      <h2><%= pluralize(@properties.errors.count, "error") %> prohibited this property from being saved:</h2>
 
       <ul>
-      <% property.errors.full_messages.each do |message| %>
+      <% @properties.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -34,6 +34,19 @@
   <div class="field">
     <%= form.label :remark %>
     <%= form.text_area :remark %>
+  </div><br>
+
+  <div class="field">
+    <h3>name of railway1:</h3>
+    <%= form.fields_for :places do |place_form| %>
+    <%= place_form.label :railwayname, "name of railway:" %>
+    <%= place_form.text_field :railwayname %>
+    <%= place_form.label :stationname, "station name:" %>
+    <%= place_form.text_field :stationname %>
+    <%= place_form.label :duration, "walking minute:" %>
+    <%= place_form.text_field :duration %>
+
+    <% end %>
   </div>
 
   <div class="actions">

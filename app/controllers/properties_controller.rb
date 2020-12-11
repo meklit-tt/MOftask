@@ -10,7 +10,7 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
-     #@properties.places.all
+     @places = @property.places.all
   end
 
   # GET /properties/new
@@ -24,12 +24,12 @@ class PropertiesController < ApplicationController
      1.times{ @properties.places.build }
   end
   def create
-    @properties = Property.new(property_params)
+     @properties = Property.new(property_params)
 
     respond_to do |format|
       if @properties.save
         format.html { redirect_to @properties, notice: 'Property was successfully created.' }
-        format.json { render :show, status: :created, location: @properties }
+        format.json { render :show, status: :created, location: @property }
       else
         format.html { render :new }
         format.json { render json: @property.errors, status: :unprocessable_entity }
@@ -70,7 +70,6 @@ class PropertiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
       params.require(:property).permit(:propertyname, :rent, :buildingage, :adress, :remark,
-                               places_attributes:[:id, :railwayname, :stationname, :duration, :property_id ]
-    )
+                               places_attributes:[:id, :railwayname, :stationname, :duration])
     end
 end

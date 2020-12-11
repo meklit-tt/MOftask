@@ -25,8 +25,8 @@
 </p>
 
 <hr>
-<% @places.each  do |form|  %>
-<p
+<% @properties.places.each  do |form|  %>
+<p>
   <strong>railway name:</strong>
   <%form.railwayname %>
 </p>
@@ -41,5 +41,5 @@
 </p>
 
 <% end %>
-<%= link_to 'Edit', edit_property_path(@properties) %>
+<%= link_to 'Edit', edit_property_path(@property) %>
 <%= link_to 'Back', properties_path %>

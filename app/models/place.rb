@@ -1,5 +1,5 @@
 class Place < ApplicationRecord
 
-  belongs_to :properties, optional: true
-
+  belongs_to :property, optional: true
+  
 end

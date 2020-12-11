@@ -3,7 +3,7 @@ class CreatePlaces < ActiveRecord::Migration[5.2]
     create_table :places do |t|
       t.string :railwayname
       t.string :stationname
-      t.time :duration
+      t.integer :duration
 
       t.timestamps
     end

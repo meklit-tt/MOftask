@@ -25,19 +25,19 @@
 </p>
 
 <hr>
-<% @properties.places.each  do |form|  %>
+<% @places.each do |f|  %>
 <p>
   <strong>railway name:</strong>
-  <%form.railwayname %>
+  <%=f.railwayname %>
 </p>
 
 <p>
   <strong>station name:</strong>
-  <% form.stationname %>
+  <%=f.stationname %>
 </p>
-
+<p>
   <strong>duration:</strong>
-  <% form.duration %>
+  <%= f.duration %>
 </p>
 
 <% end %>

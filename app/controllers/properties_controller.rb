@@ -1,8 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
 
-  # GET /properties
-  # GET /properties.json
   def index
     @properties = Property.all
   end
@@ -10,25 +8,29 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
-     @places = @property.places.all
+     @property = Property.find(params[:id])
+     @places = @property.places.order(duration: :asc)
   end
 
   # GET /properties/new
   def new
-      @properties = Property.new
-      2.times{ @properties.places.build }
+      @property = Property.new
+      2.times   {
+         @property.places.build
+       }
   end
 
   # GET /properties/1/edit
   def edit
-     1.times{ @properties.places.build }
+     1.times{ @property.places.build }
   end
+
   def create
-     @properties = Property.new(property_params)
+     @property = Property.new(property_params)
 
     respond_to do |format|
-      if @properties.save
-        format.html { redirect_to @properties, notice: 'Property was successfully created.' }
+      if @property.save
+        format.html { redirect_to @property, notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }
       else
         format.html { render :new }
@@ -41,8 +43,8 @@ class PropertiesController < ApplicationController
   # PATCH/PUT /properties/1.json
   def update
     respond_to do |format|
-      if @properties.update(property_params)
-        format.html { redirect_to @properties, notice: 'Property was successfully updated.' }
+      if @property.update(property_params)
+        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
         format.json { render :show, status: :ok, location: @property }
       else
         format.html { render :edit }

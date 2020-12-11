@@ -10,18 +10,18 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
+     #@properties.places.all
   end
 
   # GET /properties/new
   def new
       @properties = Property.new
-      @properties.places.build
+      2.times{ @properties.places.build }
   end
 
   # GET /properties/1/edit
   def edit
-    @properties = Property.find(params[:id])
-
+     1.times{ @properties.places.build }
   end
   def create
     @properties = Property.new(property_params)
@@ -29,7 +29,7 @@ class PropertiesController < ApplicationController
     respond_to do |format|
       if @properties.save
         format.html { redirect_to @properties, notice: 'Property was successfully created.' }
-        format.json { render :show, status: :created, location: @property }
+        format.json { render :show, status: :created, location: @properties }
       else
         format.html { render :new }
         format.json { render json: @property.errors, status: :unprocessable_entity }
@@ -41,8 +41,8 @@ class PropertiesController < ApplicationController
   # PATCH/PUT /properties/1.json
   def update
     respond_to do |format|
-      if @property.update(property_params)
-        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
+      if @properties.update(property_params)
+        format.html { redirect_to @properties, notice: 'Property was successfully updated.' }
         format.json { render :show, status: :ok, location: @property }
       else
         format.html { render :edit }
@@ -70,7 +70,7 @@ class PropertiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
       params.require(:property).permit(:propertyname, :rent, :buildingage, :adress, :remark,
-        places_attributes:[:id,:railwayname, :stationname, :duration ]
+                               places_attributes:[:id, :railwayname, :stationname, :duration, :property_id ]
     )
     end
 end

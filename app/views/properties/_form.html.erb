@@ -36,20 +36,29 @@
     <%= form.text_area :remark %>
   </div><br>
 
-  <div class="field">
-    <h3>name of railway1:</h3>
     <%= form.fields_for :places do |place_form| %>
-    <%= place_form.label :railwayname, "name of railway:" %>
-    <%= place_form.text_field :railwayname %>
-    <%= place_form.label :stationname, "station name:" %>
-    <%= place_form.text_field :stationname %>
-    <%= place_form.label :duration, "walking minute:" %>
-    <%= place_form.text_field :duration %>
+     <h3>name of railway1:</h3>
+     
+  <div class="field">
+       <%= place_form.label :railwayname, "name of railway:" %>
+       <%= place_form.text_field :railwayname %>
+  </div>
+
+  <div class="field">
+      <%= place_form.label :stationname, "station name:" %>
+      <%= place_form.text_field :stationname %>
+  </div>
+
+  <div class="field">
+      <%= place_form.label :duration, "walking minute:" %>
+      <%= place_form.text_field :duration %> min/mins
+  </div>
 
     <% end %>
   </div>
-
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+<%= link_to 'back', properties_path %>

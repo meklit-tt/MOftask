@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  railwayname: MyString
+  stationname: MyString
+  : MyString
+  duration: 2020-12-09 12:26:32
+
+two:
+  railwayname: MyString
+  stationname: MyString
+  : MyString
+  duration: 2020-12-09 12:26:32

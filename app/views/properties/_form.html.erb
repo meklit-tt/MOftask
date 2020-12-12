@@ -1,0 +1,62 @@
+<%= form_with(model: property, local: true) do |form| %>
+  <% if property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+      <% property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :propertyname %>
+    <%= form.text_field :propertyname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rent %>
+    <%= form.text_field :rent %>
+  </div>
+
+    <div class="field">
+    <%= form.label :buildingage %>
+    <%= form.text_field :buildingage %>
+  </div>
+
+  <div class="field">
+    <%= form.label :adress %>
+    <%= form.text_field :adress %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remark %>
+    <%= form.text_area :remark %>
+  </div><br>
+
+    <%= form.fields_for :places do |place_form| %>
+     <h3>name of railway1:</h3>
+
+  <div class="field">
+       <%= place_form.label :railwayname%>
+       <%= place_form.text_field :railwayname %>
+  </div>
+
+  <div class="field">
+      <%= place_form.label :stationname%>
+      <%= place_form.text_field :stationname %>
+  </div>
+
+  <div class="field">
+      <%= place_form.label :duration%>
+      <%= place_form.text_field :duration %> min/mins
+  </div>
+    <% end %>
+  <br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<%= link_to 'back', properties_path %>

@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_084026) do
   create_table "properties", force: :cascade do |t|
     t.string "propertyname"
     t.integer "rent"
-    t.string "buildingage"
+    t.integer "buildingage"
     t.string "adress"
     t.text "remark"
     t.datetime "created_at", null: false

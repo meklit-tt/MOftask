@@ -1,9 +1,9 @@
 class Property < ApplicationRecord
-  
+
     has_many :places, dependent: :destroy
     validates :propertyname, presence: true
     validates :rent, numericality: true
-    validates :buildingage, presence: true
+    validates :buildingage, numericality: true
     validates :adress, presence: true
     validates :remark, presence: true
 

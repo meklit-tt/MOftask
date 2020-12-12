@@ -26,6 +26,7 @@
 
 <hr>
 <% @places.each do |f|  %>
+<h3> railway station 1:</h3>
 <p>
   <strong>railway name:</strong>
   <%=f.railwayname %>
@@ -39,6 +40,7 @@
   <strong>duration:</strong>
   <%= f.duration %>
 </p>
+<hr>
 
 <% end %>
 <%= link_to 'Edit', edit_property_path(@property) %>
